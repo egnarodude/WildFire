@@ -99,13 +99,16 @@ public class CTRL_PlayerSling : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isSlinging = false;
+            trajectory.lineRendere.enabled = false;
             if (playerCtrl.canSling && playerCtrl.playerIsAiming)
             {
 
                 playerCtrl.playerIsAiming = false;
+                playerCtrl.glowSprite.SetActive(false);
                 playerCtrl.canSling = false;
                 aimReticle.SetActive(false);
                 playerCtrl.ResetRBForces();
+                Instantiate(playerCtrl.slingFireParticles, playerCtrl.rb.position, Quaternion.LookRotation(slingAimVector));
                 playerCtrl.rb.AddForce(slingAimVector.normalized * slingForce);
                 playerCtrl.resetTimeScale();
             }

@@ -2212,6 +2212,11 @@ PrefabInstance:
       propertyPath: inactiveColor.a
       value: 0.2509804
       objectReference: {fileID: 0}
+    - target: {fileID: 6362648542489650604, guid: 6a070afb92b14394db5c9cc9500e3476,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.2509804
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a070afb92b14394db5c9cc9500e3476, type: 3}
 --- !u!114 &804889606 stripped
@@ -3255,6 +3260,11 @@ PrefabInstance:
     - target: {fileID: 576565774732588781, guid: 6a070afb92b14394db5c9cc9500e3476,
         type: 3}
       propertyPath: inactiveColor.a
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362648542489650604, guid: 6a070afb92b14394db5c9cc9500e3476,
+        type: 3}
+      propertyPath: m_Color.a
       value: 0.2509804
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4355,8 +4365,9 @@ GameObject:
   - component: {fileID: 2087260255}
   - component: {fileID: 2087260254}
   - component: {fileID: 2087260253}
+  - component: {fileID: 2087260256}
   m_Layer: 0
-  m_Name: SPRT_White (4)
+  m_Name: WoodPlank
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4427,7 +4438,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5aaa94dd27e15a747ac6f226f994899c, type: 3}
-  m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
+  m_Color: {r: 0.6792453, g: 0.44142324, b: 0.23389105, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4451,6 +4462,47 @@ Transform:
   m_Father: {fileID: 477672625}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2087260256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087260252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7160e97aa35309f478540f53868f8245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  boxCollider: {fileID: 0}
+  timeToBurn: 3
+  burnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  burnColor: {r: 1, g: 0, b: 0, a: 1}
+  startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2120869017
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,6 +4773,11 @@ PrefabInstance:
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 260297018}
+    - target: {fileID: 3720118946285752134, guid: 402ccb87a082f9e4db9dfab0dd08c219,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402ccb87a082f9e4db9dfab0dd08c219, type: 3}
 --- !u!1001 &1649953556081482671

@@ -26,6 +26,7 @@ public class CTRL_Player : MonoBehaviour
     public bool isJumping = false;
     public float jumpTimer;
     public float jumpTimerRestart;
+    public GameObject glowSprite;
     private Vector3 oldPosition;
     private Vector3 playerVelocity;
 
@@ -55,7 +56,11 @@ public class CTRL_Player : MonoBehaviour
     public float tweenToSpawnTime = 2.0f;
 
     [Header("Particle Systems")]
-    public ParticleSystem deathParticles;
+    public GameObject deathParticles;
+    public GameObject slingFireParticles;
+    public GameObject slingResetParticles;
+    public GameObject switchToPlatParticles;
+    public GameObject switchToPhysParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -131,10 +136,13 @@ public class CTRL_Player : MonoBehaviour
     public void switchStatePhysics(bool isAiming)
     {
         _currentState = PlayerState.Physics;
+        GameObject physParticles = Instantiate(switchToPhysParticles, rb.position, Quaternion.identity);
+        physParticles.transform.parent = this.gameObject.transform;
         animator.SetBool("isPhysBall", true);
         rb.sharedMaterial = physMatBall;
         capsuleCollider.enabled = false;
         circleCollider.enabled = true;
+        glowSprite.SetActive(true);
 
         if (isAiming)
         {
@@ -154,6 +162,9 @@ public class CTRL_Player : MonoBehaviour
     public void SwitchStatePlatform()
     {
         _currentState = PlayerState.Platformer;
+        glowSprite.SetActive(false);
+        GameObject platPartices = Instantiate(switchToPlatParticles, rb.position, Quaternion.identity);
+        platPartices.transform.parent = this.gameObject.transform;
         animator.SetBool("isPhysBall", false);
         isGrounded = false;
         animator.SetTrigger("platSwitch");
@@ -243,6 +254,8 @@ public class CTRL_Player : MonoBehaviour
 
     public void playerDeath()
     {
+        Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+        glowSprite.SetActive(false);
         playerSpriteObject.SetActive(false);
         _currentState = PlayerState.Respawning;
         circleCollider.enabled = false;
@@ -286,6 +299,13 @@ public class CTRL_Player : MonoBehaviour
     public void resetSlingBool()
     {
         canSling = true;
+        GameObject rechargeParticles = Instantiate(slingResetParticles, rb.position, Quaternion.identity);
+        rechargeParticles.transform.parent = this.gameObject.transform;
+
+        if (_currentState == PlayerState.Physics)
+        {
+            glowSprite.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
