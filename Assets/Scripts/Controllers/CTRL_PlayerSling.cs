@@ -7,7 +7,7 @@ public class CTRL_PlayerSling : MonoBehaviour
     [Header("Game Objects/Components")]
     public CTRL_Player playerCtrl;
     public Util_Trajectory trajectory;
-
+    public MNGR_LevelManager levelManager;
 
     [Header("Sling Variables")]
     public float slingForce;
@@ -33,23 +33,35 @@ public class CTRL_PlayerSling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (levelManager.isPaused == false)
+        {
+            getInput();
+        }
+
+
+    }
+
+    private void getInput()
+    {
 
         if (Input.GetMouseButtonDown(0))
         {
             if (playerCtrl.canSling)
             {
-                Debug.Log("User Clicked");
                 slingStartPos = Input.mousePosition;
                 isSlinging = true;
                 aimreticleScale.x = 0.0f;
-                aimReticle.SetActive(true);
+
             }
 
         }
 
         if (isSlinging)
         {
-            calculateTrajectory();
+            if (playerCtrl.playerIsAiming)
+            {
+                calculateTrajectory();
+            }
             slingCurPos = Input.mousePosition;
             slingAimVector = slingStartPos - slingCurPos;
             slingDistance = (Vector3.Distance(slingStartPos, slingCurPos) / 100.0f);
@@ -61,6 +73,8 @@ public class CTRL_PlayerSling : MonoBehaviour
 
             if (slingDistance >= slingThreshold && !playerCtrl.playerIsAiming)
             {
+
+                aimReticle.SetActive(true);
                 if (playerCtrl._currentState == CTRL_Player.PlayerState.Platformer)
                 {
                     playerCtrl.switchStatePhysics(true);
@@ -84,9 +98,10 @@ public class CTRL_PlayerSling : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (playerCtrl.canSling)
+            isSlinging = false;
+            if (playerCtrl.canSling && playerCtrl.playerIsAiming)
             {
-                isSlinging = false;
+
                 playerCtrl.playerIsAiming = false;
                 playerCtrl.canSling = false;
                 aimReticle.SetActive(false);
@@ -96,8 +111,6 @@ public class CTRL_PlayerSling : MonoBehaviour
             }
 
         }
-
-
 
     }
 

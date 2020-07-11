@@ -12,6 +12,7 @@ public class CTRL_Player : MonoBehaviour
     private CircleCollider2D circleCollider;
     private CapsuleCollider2D capsuleCollider;
     public Util_Trajectory trajectory;
+    public MNGR_LevelManager levelManager;
 
     [Header("Movement Variables")]
     public float runSpeed;
@@ -49,6 +50,13 @@ public class CTRL_Player : MonoBehaviour
     [Header("Time Dilation")]
     public float slowdownFactor = 0.7f;
 
+    [Header("Death/Respawn Variables")]
+    public float deathPauseTime = 1.0f;
+    public float tweenToSpawnTime = 2.0f;
+
+    [Header("Particle Systems")]
+    public ParticleSystem deathParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,26 +76,36 @@ public class CTRL_Player : MonoBehaviour
     {
         oldPosition = this.transform.position;
 
-        switch (_currentState)
+        if (levelManager.isPaused == false)
         {
-            case PlayerState.Platformer:
-                {
-                    getInput();
-                    UpdateAnimator();
-                    evaluateJumpTimer();
-                    break;
-                }
-            case PlayerState.Physics:
-                {
-                    getPhysInput();
-                    //UpdateAnimator();
-                    break;
-                }
+            switch (_currentState)
+            {
+                case PlayerState.Platformer:
+                    {
+                        getInput();
+                        UpdateAnimator();
+                        evaluateJumpTimer();
+                        break;
+                    }
+                case PlayerState.Physics:
+                    {
+                        getPhysInput();
+                        //UpdateAnimator();
+                        break;
+                    }
+                case PlayerState.Respawning:
+                    {
+                        break;
+                    }
+            }
         }
-        playerVelocity = (oldPosition - this.transform.position) / Time.deltaTime;
-        playerVelocity.x = -playerVelocity.x;
-        evaluatePlayerFlip();
-        Debug.Log("playerVelocity = " + playerVelocity);
+
+        if (levelManager.isPaused == false)
+        {
+            playerVelocity = (oldPosition - this.transform.position) / Time.deltaTime;
+            playerVelocity.x = -playerVelocity.x;
+            evaluatePlayerFlip();
+        }
 
     }
 
@@ -174,7 +192,11 @@ public class CTRL_Player : MonoBehaviour
         // Gets horizontal axis input and applies to RigidBody2D Component on Character
         if (Mathf.Abs(Input.GetAxis("Horizontal"))>0.0f)
         {
-            this.transform.position += Vector3.right * Input.GetAxis("Horizontal") * runSpeed;
+            if (levelManager.isPaused == false)
+            {
+                this.transform.position += Vector3.right * Input.GetAxis("Horizontal") * runSpeed;
+            }
+
             isRunning = true;
         }
         else
@@ -219,10 +241,46 @@ public class CTRL_Player : MonoBehaviour
         animator.SetBool("isRunning", isRunning);
     }
 
+    public void playerDeath()
+    {
+        playerSpriteObject.SetActive(false);
+        _currentState = PlayerState.Respawning;
+        circleCollider.enabled = false;
+        capsuleCollider.enabled = false;
+        ResetRBForces();
+        rb.isKinematic = true;
+        StartCoroutine("respawnCo");
+    }
+
+    private void playerRespawn()
+    {
+        SwitchStatePlatform();
+        playerSpriteObject.SetActive(true);
+        capsuleCollider.enabled = true;
+        ResetRBForces();
+        rb.isKinematic = false;
+    }
+
+    public IEnumerator respawnCo()
+    {
+        yield return new WaitForSeconds(deathPauseTime);
+        float t = 0.0f;
+        Vector3 deathPosition = this.transform.position;
+        while(t < tweenToSpawnTime)
+        {
+            this.transform.position = Vector3.Lerp(deathPosition, levelManager.spawnPoints[levelManager.curSpawnPointIndex].transform.position, t / tweenToSpawnTime);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        playerRespawn();
+        yield return null;
+    }
+
     public enum PlayerState
     {
         Platformer,
-        Physics
+        Physics,
+        Respawning
     }
 
     public void resetSlingBool()
