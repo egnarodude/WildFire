@@ -36,11 +36,15 @@ public class CTRL_PlayerSling : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("User Clicked");
-            slingStartPos = Input.mousePosition;
-            isSlinging = true;
-            aimreticleScale.x = 0.0f;
-            aimReticle.SetActive(true);
+            if (playerCtrl.canSling)
+            {
+                Debug.Log("User Clicked");
+                slingStartPos = Input.mousePosition;
+                isSlinging = true;
+                aimreticleScale.x = 0.0f;
+                aimReticle.SetActive(true);
+            }
+
         }
 
         if (isSlinging)
@@ -57,7 +61,15 @@ public class CTRL_PlayerSling : MonoBehaviour
 
             if (slingDistance >= slingThreshold && !playerCtrl.playerIsAiming)
             {
-                playerCtrl.switchStatePhysics(true);
+                if (playerCtrl._currentState == CTRL_Player.PlayerState.Platformer)
+                {
+                    playerCtrl.switchStatePhysics(true);
+                }
+                else
+                {
+                    playerCtrl.additionalSling();
+                }
+
             }
 
             aimreticleScale.x = slingDistance;
@@ -72,12 +84,17 @@ public class CTRL_PlayerSling : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            isSlinging = false;
-            aimReticle.SetActive(false);
-            //trajectory.lineRendere.enabled = false;
-            playerCtrl.ResetRBForces();
-            playerCtrl.rb.AddForce(slingAimVector.normalized* slingForce);
-            playerCtrl.resetTimeScale();
+            if (playerCtrl.canSling)
+            {
+                isSlinging = false;
+                playerCtrl.playerIsAiming = false;
+                playerCtrl.canSling = false;
+                aimReticle.SetActive(false);
+                playerCtrl.ResetRBForces();
+                playerCtrl.rb.AddForce(slingAimVector.normalized * slingForce);
+                playerCtrl.resetTimeScale();
+            }
+
         }
 
 

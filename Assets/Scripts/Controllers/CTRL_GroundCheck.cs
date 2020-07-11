@@ -19,12 +19,24 @@ public class CTRL_GroundCheck : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, groundDistance, ~layerMask);
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.tag == "Ground" && playerCtrl.jumpTimer <= 0.0f)
+            if (hit.collider.gameObject.tag == "Ground")
             {
-                playerCtrl.isGrounded = true;
-                playerCtrl.isJumping = false;
-                playerCtrl.jumpTimer = playerCtrl.jumpTimerRestart;
+
+                if (playerCtrl.jumpTimer <= 0.0f)
+                {
+                    playerCtrl.isGrounded = true;
+                    playerCtrl.isJumping = false;
+                    playerCtrl.jumpTimer = playerCtrl.jumpTimerRestart;
+                }
             }
+            else
+            {
+                playerCtrl.isGrounded = false;
+            }
+        }
+        else
+        {
+            playerCtrl.isGrounded = false;
         }
     }
 

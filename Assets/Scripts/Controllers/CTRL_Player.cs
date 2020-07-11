@@ -43,6 +43,7 @@ public class CTRL_Player : MonoBehaviour
     public PhysicsMaterial2D physMatBall;
 
     [Header("Sling Logic")]
+    public bool canSling = true;
     public bool playerIsAiming = false;
 
     [Header("Time Dilation")]
@@ -66,6 +67,7 @@ public class CTRL_Player : MonoBehaviour
     void Update()
     {
         oldPosition = this.transform.position;
+
         switch (_currentState)
         {
             case PlayerState.Platformer:
@@ -83,37 +85,67 @@ public class CTRL_Player : MonoBehaviour
                 }
         }
         playerVelocity = (oldPosition - this.transform.position) / Time.deltaTime;
+        playerVelocity.x = -playerVelocity.x;
+        evaluatePlayerFlip();
+        Debug.Log("playerVelocity = " + playerVelocity);
+
     }
 
 
+    private void evaluatePlayerFlip()
+    {
+        if (Mathf.Abs(playerVelocity.x)>0.1f)
+        {
+            if (playerVelocity.x > 0.0f)
+            {
+                playerSpriteObject.transform.localScale = playerUnflippedScale;
+                isFlipped = false;
+            }
+            else
+            {
+                playerSpriteObject.transform.localScale = playerFlippedScale;
+                isFlipped = false;
+            }
+        }
 
+    }
 
     public void switchStatePhysics(bool isAiming)
     {
         _currentState = PlayerState.Physics;
+        animator.SetBool("isPhysBall", true);
         rb.sharedMaterial = physMatBall;
         capsuleCollider.enabled = false;
         circleCollider.enabled = true;
-        animator.SetTrigger("slingSwitch");
+
         if (isAiming)
         {
             aimSlowMo();
             ResetRBForces();
-            rb.velocity = -playerVelocity;
+            rb.velocity = playerVelocity;
             playerIsAiming = true;
         }
+    }
+
+    public void additionalSling()
+    {
+            aimSlowMo();
+            playerIsAiming = true;
     }
 
     public void SwitchStatePlatform()
     {
         _currentState = PlayerState.Platformer;
+        animator.SetBool("isPhysBall", false);
+        isGrounded = false;
+        animator.SetTrigger("platSwitch");
         ResetRBForces();
         resetTimeScale();
         rb.sharedMaterial = physMatPlatform;
         playerIsAiming = false;
         capsuleCollider.enabled = true;
         circleCollider.enabled = false;
-        animator.SetTrigger("platSwitch");
+
     }
 
     public void aimSlowMo()
@@ -142,25 +174,6 @@ public class CTRL_Player : MonoBehaviour
         // Gets horizontal axis input and applies to RigidBody2D Component on Character
         if (Mathf.Abs(Input.GetAxis("Horizontal"))>0.0f)
         {
-            if (Input.GetAxis("Horizontal") > 0.0f)
-            {
-                if (isFlipped)
-                {
-                    playerSpriteObject.transform.localScale = playerUnflippedScale;
-                    isFlipped = false;
-                }
-            }
-            else
-            {
-                if (Input.GetAxis("Horizontal") < 0.0f)
-                {
-                    if (!isFlipped)
-                    {
-                        playerSpriteObject.transform.localScale = playerFlippedScale;
-                        isFlipped = true;
-                    }
-                }
-            }
             this.transform.position += Vector3.right * Input.GetAxis("Horizontal") * runSpeed;
             isRunning = true;
         }
@@ -211,4 +224,21 @@ public class CTRL_Player : MonoBehaviour
         Platformer,
         Physics
     }
+
+    public void resetSlingBool()
+    {
+        canSling = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+            if (!canSling)
+            {
+                if (collision.gameObject.tag == "Ground")
+                {
+                    resetSlingBool();
+                }
+            }
+    }
+
 }
