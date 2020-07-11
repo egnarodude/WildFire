@@ -19,12 +19,12 @@ public class CTRL_Player : MonoBehaviour
     [Header("Art/Animation Variables")]
     private bool isFlipped = false;
     private bool isRunning = false;
-    private bool isIdle = false;
+    private bool isJumping = false;
     private float curLocation = 0.0f;
     private float oldLocation = 0.0f;
     private float runVelocity;
     public float velocityCorrection;
-    public bool isJumping = false;
+
     private Vector3 playerUnflippedScale = new Vector3(1.0f, 1.0f, 1.0f);
     private Vector3 playerFlippedScale = new Vector3(-1.0f, 1.0f, 1.0f);
 
@@ -38,11 +38,6 @@ public class CTRL_Player : MonoBehaviour
         //Sets reference to components within script on start function.
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
-        //for (int i = 0; i < footParticles.Length; i++)
-        //{
-        //    footParticleEmission[i] = footParticles[i].emissionRate;
-        //    Debug.Log("FoorParticle " + i + " = " + footParticleEmission[i]);
-        //}
 
     }
 
@@ -97,27 +92,13 @@ public class CTRL_Player : MonoBehaviour
     private void jump()
     {
         animator.SetTrigger("jump");
-        disableFootParticles();
         isJumping = true;
         isGrounded = false;
         rb.AddForce(Vector2.up * jumpForce);
     }
 
-    public void enableFootParticles()
-    {
-        for (int i = 0; i<footParticles.Length; i++)
-        {
-            //footParticles[i].emissionRate = footParticleEmission[i];
-        }
-    }
 
-    public void disableFootParticles()
-    {
-        for (int i = 0; i < footParticles.Length; i++)
-        {
-            //footParticles[i].emissionRate = 0.0f;
-        }
-    }
+
 
     private void UpdateAnimator()
     {

@@ -15,7 +15,6 @@ public class CTRL_GroundCheck : MonoBehaviour
             if (playerCtrl.isGrounded == false)
             {
                 playerCtrl.isGrounded = true;
-                playerCtrl.enableFootParticles();
             }
 
         }
