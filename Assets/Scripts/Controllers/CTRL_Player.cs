@@ -9,7 +9,10 @@ public class CTRL_Player : MonoBehaviour
     public GameObject playerSpriteObject;
     public Animator animator;
     public Rigidbody2D rb;
-    
+    private CircleCollider2D circleCollider;
+    private CapsuleCollider2D capsuleCollider;
+    public Util_Trajectory trajectory;
+
     [Header("Movement Variables")]
     public float runSpeed;
     public float jumpForce;
@@ -22,9 +25,8 @@ public class CTRL_Player : MonoBehaviour
     public bool isJumping = false;
     public float jumpTimer;
     public float jumpTimerRestart;
-    private float curLocation = 0.0f;
-    private float oldLocation = 0.0f;
-    private float runVelocity;
+    private Vector3 oldPosition;
+    private Vector3 playerVelocity;
 
     private Vector3 playerUnflippedScale = new Vector3(1.0f, 1.0f, 1.0f);
     private Vector3 playerFlippedScale = new Vector3(-1.0f, 1.0f, 1.0f);
@@ -33,6 +35,19 @@ public class CTRL_Player : MonoBehaviour
     public ParticleSystem[] footParticles = new ParticleSystem[0];
     private float[] footParticleEmission = new float[0];
 
+    [Header("State Machine")]
+    public PlayerState _currentState;
+
+    [Header("Physics Materials")]
+    public PhysicsMaterial2D physMatPlatform;
+    public PhysicsMaterial2D physMatBall;
+
+    [Header("Sling Logic")]
+    public bool playerIsAiming = false;
+
+    [Header("Time Dilation")]
+    public float slowdownFactor = 0.7f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,17 +55,85 @@ public class CTRL_Player : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         jumpTimerRestart = jumpTimer;
-
+        capsuleCollider = this.GetComponent<CapsuleCollider2D>();
+        circleCollider = this.GetComponent<CircleCollider2D>();
+        capsuleCollider.enabled = true;
+        circleCollider.enabled = false;
+        rb.sharedMaterial = physMatPlatform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        getInput();
+        oldPosition = this.transform.position;
+        switch (_currentState)
+        {
+            case PlayerState.Platformer:
+                {
+                    getInput();
+                    UpdateAnimator();
+                    evaluateJumpTimer();
+                    break;
+                }
+            case PlayerState.Physics:
+                {
+                    getPhysInput();
+                    //UpdateAnimator();
+                    break;
+                }
+        }
+        playerVelocity = (oldPosition - this.transform.position) / Time.deltaTime;
+    }
 
-        UpdateAnimator();
 
-        evaluateJumpTimer();
+
+
+    public void switchStatePhysics(bool isAiming)
+    {
+        _currentState = PlayerState.Physics;
+        rb.sharedMaterial = physMatBall;
+        capsuleCollider.enabled = false;
+        circleCollider.enabled = true;
+        animator.SetTrigger("slingSwitch");
+        if (isAiming)
+        {
+            aimSlowMo();
+            ResetRBForces();
+            rb.velocity = -playerVelocity;
+            playerIsAiming = true;
+        }
+    }
+
+    public void SwitchStatePlatform()
+    {
+        _currentState = PlayerState.Platformer;
+        ResetRBForces();
+        resetTimeScale();
+        rb.sharedMaterial = physMatPlatform;
+        playerIsAiming = false;
+        capsuleCollider.enabled = true;
+        circleCollider.enabled = false;
+        animator.SetTrigger("platSwitch");
+    }
+
+    public void aimSlowMo()
+    {
+        Time.timeScale = slowdownFactor;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+    }
+
+    public void resetTimeScale()
+    {
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+    }
+
+    private void getPhysInput()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            SwitchStatePlatform();
+        }
     }
 
     private void getInput()
@@ -93,6 +176,13 @@ public class CTRL_Player : MonoBehaviour
 
     }
 
+    public void ResetRBForces()
+    {
+        rb.velocity = new Vector3(0f, 0f, 0f);
+        rb.angularVelocity = 0.0f;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+    }
+
     private void evaluateJumpTimer()
     {
         if (jumpTimer > 0.0f)
@@ -108,10 +198,7 @@ public class CTRL_Player : MonoBehaviour
         isGrounded = false;
         rb.AddForce(Vector2.up * jumpForce);
     }
-
-
-
-
+    
     private void UpdateAnimator()
     {
         animator.SetBool("isJumping", isJumping);
@@ -119,5 +206,9 @@ public class CTRL_Player : MonoBehaviour
         animator.SetBool("isRunning", isRunning);
     }
 
-
+    public enum PlayerState
+    {
+        Platformer,
+        Physics
+    }
 }

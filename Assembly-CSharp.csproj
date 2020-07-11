@@ -64,7 +64,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controllers\CTRL_GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_Player.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_PlayerSling.cs" />
     <Compile Include="Assets\Scripts\Managers\MNGR_LevelManager.cs" />
+    <Compile Include="Assets\Scripts\Utilities\Util_Trajectory.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/donal/Documents/WildFire/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
