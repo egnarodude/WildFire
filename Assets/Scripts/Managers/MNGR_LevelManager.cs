@@ -15,8 +15,14 @@ public class MNGR_LevelManager : MonoBehaviour
     [Header("Level Name Strings")]
     public string thisLevelName;
     public string nextLevelName;
-    public string lastLevelName;
+    public string previousLevelName;
     public string mainMenuName;
+
+    [Header("Level Indeces")]
+    public int thisLevelIndex;
+    public int nextLevelIndex;
+    public int previousLevelIndex;
+    public int mainMenuIndex;
 
     [Header("UI Stuff")]
     public GameObject overlayUIPanel;
@@ -38,6 +44,8 @@ public class MNGR_LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainMenuIndex = 0;
+        thisLevelIndex = SceneManager.GetActiveScene().buildIndex;
         thisLevelName = SceneManager.GetActiveScene().name;
         unpauseTime();
         levelTimerReset = levelTimer;
@@ -99,26 +107,28 @@ public class MNGR_LevelManager : MonoBehaviour
 
     public void loadNextLevel()
     {
+        nextLevelIndex = thisLevelIndex + 1;
         unpauseTime();
-        SceneManager.LoadScene(nextLevelName);
+        SceneManager.LoadScene(nextLevelIndex);
     }
 
-    public void loadLastLevel()
+    public void loadPreviousLevel()
     {
+        nextLevelIndex = thisLevelIndex - 1;
         unpauseTime();
-        SceneManager.LoadScene(lastLevelName);
+        SceneManager.LoadScene(previousLevelIndex);
     }
 
     public void reloadThisLevel()
     {
         unpauseTime();
-        SceneManager.LoadScene(thisLevelName);
+        SceneManager.LoadScene(thisLevelIndex);
     }
 
     public void loadMainMenu()
     {
         unpauseTime();
-        SceneManager.LoadScene(mainMenuName);
+        SceneManager.LoadScene(mainMenuIndex);
     }
 
     public void winLevel()
