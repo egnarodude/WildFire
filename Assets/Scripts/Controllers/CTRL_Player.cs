@@ -19,11 +19,12 @@ public class CTRL_Player : MonoBehaviour
     [Header("Art/Animation Variables")]
     private bool isFlipped = false;
     private bool isRunning = false;
-    private bool isJumping = false;
+    public bool isJumping = false;
+    public float jumpTimer;
+    public float jumpTimerRestart;
     private float curLocation = 0.0f;
     private float oldLocation = 0.0f;
     private float runVelocity;
-    public float velocityCorrection;
 
     private Vector3 playerUnflippedScale = new Vector3(1.0f, 1.0f, 1.0f);
     private Vector3 playerFlippedScale = new Vector3(-1.0f, 1.0f, 1.0f);
@@ -38,6 +39,7 @@ public class CTRL_Player : MonoBehaviour
         //Sets reference to components within script on start function.
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
+        jumpTimerRestart = jumpTimer;
 
     }
 
@@ -47,6 +49,8 @@ public class CTRL_Player : MonoBehaviour
         getInput();
 
         UpdateAnimator();
+
+        evaluateJumpTimer();
     }
 
     private void getInput()
@@ -87,6 +91,14 @@ public class CTRL_Player : MonoBehaviour
             jump();
         }
 
+    }
+
+    private void evaluateJumpTimer()
+    {
+        if (jumpTimer > 0.0f)
+        {
+            jumpTimer -= Time.deltaTime;
+        }
     }
 
     private void jump()

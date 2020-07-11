@@ -19586,7 +19586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399095986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.424, z: 0}
+  m_LocalPosition: {x: 0, y: -0.216, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1656265838}
@@ -19605,6 +19605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCtrl: {fileID: 1656265839}
+  groundDistance: 0.27
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!58 &1399095989
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19612,7 +19616,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399095986}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -19822,7 +19826,7 @@ GameObject:
   - component: {fileID: 1580167290}
   - component: {fileID: 1580167289}
   m_Layer: 0
-  m_Name: PTCL_HeadFlames01 (1)
+  m_Name: PTCL_HeadFlames02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21943,12 +21947,12 @@ ParticleSystem:
         m_RotationOrder: 4
     inWorldSpace: 0
   InheritVelocityModule:
-    enabled: 0
+    enabled: 1
     m_Mode: 0
     m_Curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -24576,7 +24580,7 @@ GameObject:
   - component: {fileID: 1656265840}
   - component: {fileID: 1656265836}
   - component: {fileID: 1656265839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24654,7 +24658,9 @@ MonoBehaviour:
   runSpeed: 0.075
   jumpForce: 225
   isGrounded: 0
-  velocityCorrection: 45
+  isJumping: 0
+  jumpTimer: 0.1
+  jumpTimerRestart: 0
   footParticles:
   - {fileID: 686596402}
   - {fileID: 416418551}
