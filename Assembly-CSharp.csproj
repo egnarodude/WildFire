@@ -64,13 +64,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PTCL_IgnoreTimescale.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_Burnable.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_GroundCheck.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_KillArea.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_LevelWin.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_Player.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\Controllers\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\Controllers\UI_MainMenu.cs" />
     <Compile Include="Assets\Scripts\Managers\MNGR_LevelManager.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+=======
+    <Compile Include="Assets\Scripts\Controllers\CTRL_PlayerSling.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_Waypoint.cs" />
+    <Compile Include="Assets\Scripts\Managers\MNGR_LevelManager.cs" />
+    <Compile Include="Assets\Scripts\PTCL_SelfDestroy.cs" />
+    <Compile Include="Assets\Scripts\Utilities\Util_Trajectory.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\FX\Shaders\FSH_TrailDark.shader" />
+>>>>>>> 90d76efaebb48daf6e76aebd7682c1cfc57b8f10
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
@@ -89,6 +104,9 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Source_Practice/Workspaces/WildFire/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/Users/donal/Documents/WildFire/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Source_Practice/Workspaces/WildFire/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
@@ -113,6 +131,9 @@
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Source_Practice/Workspaces/WildFire/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/Users/donal/Documents/WildFire/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Source_Practice/Workspaces/WildFire/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
