@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CTRL_Player : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class CTRL_Player : MonoBehaviour
     [Header("Death/Respawn Variables")]
     public float deathPauseTime = 1.0f;
     public float tweenToSpawnTime = 2.0f;
+    public int deathCounter = 0;
 
     [Header("Particle Systems")]
     public GameObject deathParticles;
@@ -61,6 +63,10 @@ public class CTRL_Player : MonoBehaviour
     public GameObject slingResetParticles;
     public GameObject switchToPlatParticles;
     public GameObject switchToPhysParticles;
+
+    [Header("Text Objects")]
+    public TextMeshProUGUI deathsText;
+    private string deathsTextString;
 
     // Start is called before the first frame update
     void Start()
@@ -254,6 +260,8 @@ public class CTRL_Player : MonoBehaviour
 
     public void playerDeath()
     {
+        updateDeathCount();
+
         Instantiate(deathParticles, this.transform.position, Quaternion.identity);
         glowSprite.SetActive(false);
         playerSpriteObject.SetActive(false);
@@ -263,6 +271,13 @@ public class CTRL_Player : MonoBehaviour
         ResetRBForces();
         rb.isKinematic = true;
         StartCoroutine("respawnCo");
+    }
+
+    private void updateDeathCount()
+    {
+        deathCounter++;
+        deathsTextString = deathCounter.ToString();
+        deathsText.text = deathsTextString;
     }
 
     private void playerRespawn()
