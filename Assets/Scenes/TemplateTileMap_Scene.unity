@@ -49188,6 +49188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 554992249921505822, guid: 402ccb87a082f9e4db9dfab0dd08c219,
         type: 3}
+<<<<<<< HEAD
       propertyPath: igniterPrefab
       value: 
       objectReference: {fileID: 3265364868295210742, guid: 20ee642ee5d18484289d254fdbf98752,
@@ -49196,6 +49197,15 @@ PrefabInstance:
         type: 3}
       propertyPath: igniterSpawnForce
       value: 50
+=======
+      propertyPath: slopeCheckDistance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 554992249921505822, guid: 402ccb87a082f9e4db9dfab0dd08c219,
+        type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 16384
+>>>>>>> 42f6f74a13ae09315cd59c1d63bb9608c707ab9e
       objectReference: {fileID: 0}
     - target: {fileID: 554992249921505792, guid: 402ccb87a082f9e4db9dfab0dd08c219,
         type: 3}
@@ -49747,6 +49757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340288863608520469, guid: d8037bad4d065044c91c9d34cd0268cd,
         type: 3}
+<<<<<<< HEAD
       propertyPath: theCharacter
       value: 
       objectReference: {fileID: 1656265838}
@@ -49755,6 +49766,16 @@ PrefabInstance:
       propertyPath: theCam
       value: 
       objectReference: {fileID: 519420031}
+=======
+      propertyPath: theCam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 4340288863608520469, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: theCharacter
+      value: 
+      objectReference: {fileID: 1656265838}
+>>>>>>> 42f6f74a13ae09315cd59c1d63bb9608c707ab9e
     - target: {fileID: 4340288863849067256, guid: d8037bad4d065044c91c9d34cd0268cd,
         type: 3}
       propertyPath: m_Enabled
@@ -49762,6 +49783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340288863849067256, guid: d8037bad4d065044c91c9d34cd0268cd,
         type: 3}
+<<<<<<< HEAD
       propertyPath: theCam
       value: 
       objectReference: {fileID: 519420031}
@@ -49770,6 +49792,16 @@ PrefabInstance:
       propertyPath: theCharacter
       value: 
       objectReference: {fileID: 1656265838}
+=======
+      propertyPath: theCharacter
+      value: 
+      objectReference: {fileID: 1656265838}
+    - target: {fileID: 4340288863849067256, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: theCam
+      value: 
+      objectReference: {fileID: 519420031}
+>>>>>>> 42f6f74a13ae09315cd59c1d63bb9608c707ab9e
     - target: {fileID: 4340288864322082345, guid: d8037bad4d065044c91c9d34cd0268cd,
         type: 3}
       propertyPath: m_Enabled
