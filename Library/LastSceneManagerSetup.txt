@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/SampleScene.unity
+=======
+- path: Assets/Scenes/TemplateTileMap_Scene.unity
+>>>>>>> 8be3f51289f902541791e10eb94337f33b02e506
   isLoaded: 1
   isActive: 1
   isSubScene: 0
