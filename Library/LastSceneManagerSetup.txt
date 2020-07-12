@@ -1,5 +1,13 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/TemplateTileMap_Scene.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/MovingPlatform.unity
+=======
+- path: Assets/Scenes/MainMenu.unity
+>>>>>>> 13a08c36009b1ca083b41edcb0252012a90be2cd
+>>>>>>> 7003f2482b31059c49f9796bf8139725d050a9fe
   isLoaded: 1
   isActive: 1
   isSubScene: 0

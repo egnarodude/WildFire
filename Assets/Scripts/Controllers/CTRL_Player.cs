@@ -20,6 +20,7 @@ public class CTRL_Player : MonoBehaviour
     public float jumpForce;
     private Vector2 movementForce;
     public bool isGrounded;
+    public bool moving = false;
 
     [Header("Art/Animation Variables")]
     private bool isFlipped = false;
@@ -325,13 +326,13 @@ public class CTRL_Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-            if (!canSling)
+         if (!canSling)
+         {
+            if (collision.gameObject.tag == "Ground")
             {
-                if (collision.gameObject.tag == "Ground")
-                {
-                    resetSlingBool();
-                }
+                resetSlingBool();
             }
+         }
     }
 
 }

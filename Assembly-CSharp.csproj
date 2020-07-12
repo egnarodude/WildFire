@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\Controllers\CTRL_GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_KillArea.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_LevelWin.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_MoveOnTouch.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_Platforms.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_Player.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_PlayerSling.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_Waypoint.cs" />
