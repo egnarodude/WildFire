@@ -391,29 +391,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &115953007 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 115953007, guid: 6a070afb92b14394db5c9cc9500e3476,
-    type: 3}
-  m_PrefabInstance: {fileID: 127137075858214871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &115953010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115953007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b3d6554ffb764eb0206bec3aa04c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightColor: {r: 1, g: 0.49803922, b: 0, a: 1}
-  minIntensity: 1.4
-  maxIntensity: 1.6
-  minRange: 0.45
-  maxRange: 0.5
 --- !u!1 &116985792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,29 +1375,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &228451681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 228451681, guid: 6a070afb92b14394db5c9cc9500e3476,
-    type: 3}
-  m_PrefabInstance: {fileID: 127137075858214871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &228451684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228451681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b3d6554ffb764eb0206bec3aa04c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightColor: {r: 1, g: 0.49803922, b: 0, a: 1}
-  minIntensity: 1.4
-  maxIntensity: 1.6
-  minRange: 0.45
-  maxRange: 0.5
 --- !u!1 &260297017
 GameObject:
   m_ObjectHideFlags: 0
@@ -8490,29 +8444,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &786554709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 786554709, guid: 6a070afb92b14394db5c9cc9500e3476,
-    type: 3}
-  m_PrefabInstance: {fileID: 127137075858214871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &786554712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786554709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b3d6554ffb764eb0206bec3aa04c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightColor: {r: 1, g: 0.49803922, b: 0, a: 1}
-  minIntensity: 1.4
-  maxIntensity: 1.6
-  minRange: 1
-  maxRange: 1.1
 --- !u!114 &794141738 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 576565774732588781, guid: 6a070afb92b14394db5c9cc9500e3476,
@@ -43903,11 +43834,6 @@ PrefabInstance:
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 260297018}
-    - target: {fileID: 576565774732588781, guid: 6a070afb92b14394db5c9cc9500e3476,
-        type: 3}
-      propertyPath: isActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a070afb92b14394db5c9cc9500e3476, type: 3}
 --- !u!114 &127137075858214872 stripped
