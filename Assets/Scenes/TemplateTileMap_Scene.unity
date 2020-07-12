@@ -1671,6 +1671,11 @@ PrefabInstance:
       propertyPath: waypointIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 576565774732588781, guid: 6a070afb92b14394db5c9cc9500e3476,
+        type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2693049447304724401, guid: 6a070afb92b14394db5c9cc9500e3476,
         type: 3}
       propertyPath: m_Offset.y
@@ -21288,6 +21293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: waypointIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 576565774732588781, guid: 6a070afb92b14394db5c9cc9500e3476,
+        type: 3}
+      propertyPath: isActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a070afb92b14394db5c9cc9500e3476, type: 3}
