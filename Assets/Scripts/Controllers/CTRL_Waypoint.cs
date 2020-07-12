@@ -6,19 +6,26 @@ public class CTRL_Waypoint : MonoBehaviour
 {
     [Header("GameObjects/Components")]
     public MNGR_LevelManager levelManager;
-    public SpriteRenderer spriteRend;
 
     [Header("Waypoint Variables")]
     public int waypointIndex;
-    private bool isActive;
+    public bool isActive;
 
     [Header("Art/Prototyping")]
     public Color inactiveColor;
     public Color activeColor;
 
+    [Header("Animator Variables")]
+    public Animator animator;
+    public string activateTrigger;
+    public string deactivateTrigger;
+
     private void Start()
     {
-        spriteRend = this.GetComponent<SpriteRenderer>();
+        if (isActive)
+        {
+            animator.SetTrigger(activateTrigger);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,12 +44,12 @@ public class CTRL_Waypoint : MonoBehaviour
 
     public void setActive()
     {
-        spriteRend.color = activeColor;
+        animator.SetTrigger(activateTrigger);
     }
 
     public void setInactive()
     {
-        spriteRend.color = inactiveColor;
+        animator.SetTrigger(deactivateTrigger);
     }
 
 }
