@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 using TMPro;
 
 public class CTRL_Player : MonoBehaviour
@@ -28,6 +29,7 @@ public class CTRL_Player : MonoBehaviour
     public bool isJumping = false;
     public float jumpTimer;
     public float jumpTimerRestart;
+    public Light2D playerLight;
     public GameObject glowSprite;
     private Vector3 oldPosition;
     private Vector3 playerVelocity;
@@ -267,6 +269,7 @@ public class CTRL_Player : MonoBehaviour
         glowSprite.SetActive(false);
         playerSpriteObject.SetActive(false);
         _currentState = PlayerState.Respawning;
+        playerLight.enabled = false;
         circleCollider.enabled = false;
         capsuleCollider.enabled = false;
         ResetRBForces();
@@ -285,6 +288,7 @@ public class CTRL_Player : MonoBehaviour
     {
         SwitchStatePlatform();
         playerSpriteObject.SetActive(true);
+        playerLight.enabled = true;
         capsuleCollider.enabled = true;
         ResetRBForces();
         rb.isKinematic = false;
