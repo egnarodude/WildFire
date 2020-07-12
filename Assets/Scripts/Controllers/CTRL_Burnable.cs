@@ -51,7 +51,6 @@ public class CTRL_Burnable : MonoBehaviour
         {
             burnTime += Time.deltaTime;
             curveEval = burnTime / timeToBurn;
-            Debug.Log("curveEval = " + curveEval);
             spriteMaterial.SetFloat("_Dissolve", shaderBurnCurve.Evaluate(burnCurve.Evaluate(curveEval)));
             var emission = fireParticles.emission;
 
@@ -99,7 +98,7 @@ public class CTRL_Burnable : MonoBehaviour
 
     private IEnumerator spreadBurnCo()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         isBurning = true;
         yield return null;
     }

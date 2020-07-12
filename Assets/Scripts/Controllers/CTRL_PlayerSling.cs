@@ -105,6 +105,7 @@ public class CTRL_PlayerSling : MonoBehaviour
 
                 playerCtrl.playerIsAiming = false;
                 playerCtrl.glowSprite.SetActive(false);
+                playerCtrl.ignitersLoaded = true;
                 playerCtrl.canSling = false;
                 aimReticle.SetActive(false);
                 playerCtrl.ResetRBForces();

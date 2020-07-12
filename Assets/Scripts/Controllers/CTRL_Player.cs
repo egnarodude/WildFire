@@ -41,6 +41,11 @@ public class CTRL_Player : MonoBehaviour
     public ParticleSystem[] footParticles = new ParticleSystem[0];
     private float[] footParticleEmission = new float[0];
 
+    [Header("IgniterVariables")]
+    public GameObject igniterPrefab;
+    public bool ignitersLoaded = false;
+    public float igniterSpawnForce = 50.0f;
+
     [Header("State Machine")]
     public PlayerState _currentState;
 
@@ -171,6 +176,7 @@ public class CTRL_Player : MonoBehaviour
     public void SwitchStatePlatform()
     {
         _currentState = PlayerState.Platformer;
+        ignitersLoaded = false;
         glowSprite.SetActive(false);
         GameObject platPartices = Instantiate(switchToPlatParticles, rb.position, Quaternion.identity);
         platPartices.transform.parent = this.gameObject.transform;
@@ -330,9 +336,22 @@ public class CTRL_Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (_currentState == PlayerState.Physics)
+        {
+            ignitersLoaded = false;
+            Debug.Log("collision Velocity magnitude = " + collision.relativeVelocity.magnitude);
+
+            int igniterSpawns = (int)Random.Range(1.0f, 4.0f);
+            for (int i = 0; i <= igniterSpawns; i++)
+            {
+                GameObject newIgniter = Instantiate(igniterPrefab, rb.position, Quaternion.identity);
+                newIgniter.GetComponent<Rigidbody2D>().AddForce((collision.contacts[0].normal + new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f))) * igniterSpawnForce*(collision.relativeVelocity.magnitude/4.0f));
+            }
+        }
+
          if (!canSling)
          {
-            if (collision.gameObject.tag == "Ground")
+            if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Burnable")
             {
                 resetSlingBool();
             }
