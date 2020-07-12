@@ -75,7 +75,10 @@ public class CTRL_Player : MonoBehaviour
     private float slopeCheckDistance;
     [SerializeField]
     private LayerMask whatIsGround;
-
+    private float xInput;
+    private float slopeDownAngle;
+    private float slopeDownAngleOld;
+    private Vector2 slopeNormalPerp;
 
     // Start is called before the first frame update
     void Start()
@@ -154,6 +157,11 @@ public class CTRL_Player : MonoBehaviour
 
         if (hit)
         {
+            slopeNormalPerp = Vector2.Perpendicular(hit.normal);
+
+            slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
+
+            Debug.DrawRay(hit.point, slopeNormalPerp, Color.red);
             Debug.DrawRay(hit.point, hit.normal, Color.green);
         }
     }
