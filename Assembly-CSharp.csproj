@@ -62,6 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PixelFX_U5\scripts\Controller.cs" />
+    <Compile Include="Assets\PixelFX_U5\scripts\demo_collision_movement.cs" />
+    <Compile Include="Assets\PixelFX_U5\scripts\Random_movement.cs" />
     <Compile Include="Assets\PTCL_IgnoreTimescale.cs" />
     <Compile Include="Assets\PVZ Character Based Parallax\Scripts\Camera_FollowChar.cs" />
     <Compile Include="Assets\PVZ Character Based Parallax\Scripts\PVZ_Camera_FollowCamForInfinite.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Assets\Scripts\Managers\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\PTCL_SelfDestroy.cs" />
     <Compile Include="Assets\Scripts\Utilities\Util_Trajectory.cs" />
+    <None Include="Assets\PixelFX_U5\Help.txt" />
     <None Include="Assets\Pixel Art Forest\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

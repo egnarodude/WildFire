@@ -1,0 +1,11 @@
+Thanks for purchasing this asset!
+If you have any problems\questions, feel free to contact me: stanislavdol@gmail.com
+
+Scaling: Unfortunately most included particle systems use "-\\- over lifetime" parameters which are not accessible by script.
+So it's impossible to scale them automatically.
+However, manual scaling is very simple. Usually you just need to scale the velocity\force parameters proportionally to the size scale.
+For example, you need to increase fire size 2 times. When you increase transform scale in the inspector, emitter size is increased automatically.
+You need to increase start speed, startsize and velocit\force over lifetime 2 times.
+If you have any problems with this please contact me, I'm always happy to help.
+
+Good luck with your projects!
