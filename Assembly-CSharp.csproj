@@ -70,6 +70,7 @@
     <Compile Include="Assets\PVZ Character Based Parallax\Scripts\TestMovement.cs" />
     <Compile Include="Assets\PVZ Offset Scrolling Parallax\Scripts\PVZ_FindScale.cs" />
     <Compile Include="Assets\PVZ Offset Scrolling Parallax\Scripts\PVZ_TextureOffset.cs" />
+    <Compile Include="Assets\Scripts\ArtScripts\ART_2DLightFlicker.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_Burnable.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_KillArea.cs" />
