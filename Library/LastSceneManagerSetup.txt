@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/MovingPlatform.unity
+=======
+- path: Assets/Scenes/MainMenu.unity
+>>>>>>> 13a08c36009b1ca083b41edcb0252012a90be2cd
   isLoaded: 1
   isActive: 1
   isSubScene: 0
