@@ -62,5 +62,5 @@ Material:
     - _Surface: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.84413767, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 0.753687, b: 0, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
