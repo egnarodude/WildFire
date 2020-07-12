@@ -4816,8 +4816,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1085243729
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9627,8 +9627,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1085243729
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -14438,8 +14438,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1085243729
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -14471,6 +14471,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8558946970681141104}
     m_Modifications:
+    - target: {fileID: 1025667145262576844, guid: c5e3c576b0b2b18428e4b81e937db19b,
+        type: 3}
+      propertyPath: m_Name
+      value: PTCL_SlingFire
+      objectReference: {fileID: 0}
     - target: {fileID: 3426542319936105814, guid: c5e3c576b0b2b18428e4b81e937db19b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14541,11 +14546,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1025667145262576844, guid: c5e3c576b0b2b18428e4b81e937db19b,
-        type: 3}
-      propertyPath: m_Name
-      value: PTCL_SlingFire
-      objectReference: {fileID: 0}
     - target: {fileID: 576048579313217557, guid: c5e3c576b0b2b18428e4b81e937db19b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14565,6 +14565,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 272018430658765473, guid: c5e3c576b0b2b18428e4b81e937db19b,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1085243729
+      objectReference: {fileID: 0}
+    - target: {fileID: 272018430658765473, guid: c5e3c576b0b2b18428e4b81e937db19b,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 756100859354999918, guid: c5e3c576b0b2b18428e4b81e937db19b,
         type: 3}
@@ -14595,6 +14605,16 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864260764803020630, guid: c5e3c576b0b2b18428e4b81e937db19b,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1085243729
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864260764803020630, guid: c5e3c576b0b2b18428e4b81e937db19b,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4419527461980033555, guid: c5e3c576b0b2b18428e4b81e937db19b,
         type: 3}

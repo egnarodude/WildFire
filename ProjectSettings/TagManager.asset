@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG_Far
+    uniqueID: 101821803
+    locked: 0
+  - name: BG_Mid
+    uniqueID: 2535435067
+    locked: 0
+  - name: BG_Near
+    uniqueID: 2565927859
+    locked: 0
+  - name: TileMap
+    uniqueID: 458275443
+    locked: 0
+  - name: Player
+    uniqueID: 3209723567
+    locked: 0
