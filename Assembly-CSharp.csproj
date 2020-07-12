@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\ArtScripts\ART_2DLightFlicker.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_Burnable.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_GroundCheck.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CTRL_Igniter.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_KillArea.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_LevelWin.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_MoveOnTouch.cs" />
