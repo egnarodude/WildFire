@@ -7784,9 +7784,9 @@ GameObject:
   - component: {fileID: 616731038}
   - component: {fileID: 616731037}
   - component: {fileID: 616731036}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: WoodPlank (2)
-  m_TagString: Ground
+  m_TagString: Burnable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21428,9 +21428,9 @@ GameObject:
   - component: {fileID: 2087260254}
   - component: {fileID: 2087260253}
   - component: {fileID: 2087260256}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: WoodPlank
-  m_TagString: Ground
+  m_TagString: Burnable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21669,7 +21669,7 @@ GameObject:
   - component: {fileID: 2088722778}
   - component: {fileID: 2088722777}
   - component: {fileID: 2088722779}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -43352,9 +43352,9 @@ GameObject:
   - component: {fileID: 2117792084}
   - component: {fileID: 2117792083}
   - component: {fileID: 2117792082}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: WoodPlank (1)
-  m_TagString: Ground
+  m_TagString: Burnable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

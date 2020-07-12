@@ -19,7 +19,7 @@ public class CTRL_GroundCheck : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, groundDistance, ~layerMask);
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.tag == "Ground")
+            if (hit.collider.gameObject.tag == "Ground" || hit.collider.gameObject.tag == "Burnable")
             {
 
                 if (playerCtrl.jumpTimer <= 0.0f)
