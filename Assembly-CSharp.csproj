@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PTCL_IgnoreTimescale.cs" />
+    <Compile Include="Assets\Scripts\Art_Scripts\ART_Parallax.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_Burnable.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Controllers\CTRL_KillArea.cs" />
