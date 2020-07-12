@@ -59,6 +59,8 @@ public class CTRL_Player : MonoBehaviour
     public float deathPauseTime = 1.0f;
     public float tweenToSpawnTime = 2.0f;
     public int deathCounter = 0;
+    public TextMeshProUGUI deathsText;
+    private string deathsTextString;
 
     [Header("Particle Systems")]
     public GameObject deathParticles;
@@ -67,9 +69,13 @@ public class CTRL_Player : MonoBehaviour
     public GameObject switchToPlatParticles;
     public GameObject switchToPhysParticles;
 
-    [Header("Text Objects")]
-    public TextMeshProUGUI deathsText;
-    private string deathsTextString;
+    [Header("Particle Systems")]
+    public Vector2 colliderSize;
+    [SerializeField]
+    private float slopeCheckDistance;
+    [SerializeField]
+    private LayerMask whatIsGround;
+
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +89,8 @@ public class CTRL_Player : MonoBehaviour
         capsuleCollider.enabled = true;
         circleCollider.enabled = false;
         rb.sharedMaterial = physMatPlatform;
+
+        colliderSize = capsuleCollider.size;
     }
 
     // Update is called once per frame
@@ -123,6 +131,32 @@ public class CTRL_Player : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        SlopeCheck();
+    }
+
+    private void SlopeCheck()
+    {
+        Vector2 checkPos = transform.position - new Vector3(0.0f, colliderSize.y / 2);
+
+        SlopeCheckVertical(checkPos);
+    }
+
+    private void SlopeCheckHorizontal(Vector2 checkPos)
+    {
+
+    }
+
+    private void SlopeCheckVertical(Vector2 checkPos)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(checkPos, Vector2.down, slopeCheckDistance, whatIsGround);
+
+        if (hit)
+        {
+            Debug.DrawRay(hit.point, hit.normal, Color.green);
+        }
+    }
 
     private void evaluatePlayerFlip()
     {

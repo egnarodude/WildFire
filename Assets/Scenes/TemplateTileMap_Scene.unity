@@ -44143,6 +44143,16 @@ PrefabInstance:
       propertyPath: tweenToSpawnTime
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 554992249921505822, guid: 402ccb87a082f9e4db9dfab0dd08c219,
+        type: 3}
+      propertyPath: slopeCheckDistance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 554992249921505822, guid: 402ccb87a082f9e4db9dfab0dd08c219,
+        type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 16384
+      objectReference: {fileID: 0}
     - target: {fileID: 554992249921505792, guid: 402ccb87a082f9e4db9dfab0dd08c219,
         type: 3}
       propertyPath: levelManager
@@ -44686,16 +44696,46 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4340288863608520469, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: theCam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 4340288863608520469, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: theCharacter
+      value: 
+      objectReference: {fileID: 1656265838}
     - target: {fileID: 4340288863849067256, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340288863849067256, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: theCharacter
+      value: 
+      objectReference: {fileID: 1656265838}
+    - target: {fileID: 4340288863849067256, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: theCam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 4340288864322082345, guid: d8037bad4d065044c91c9d34cd0268cd,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4340288864322082345, guid: d8037bad4d065044c91c9d34cd0268cd,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: theCam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 4340288864322082345, guid: d8037bad4d065044c91c9d34cd0268cd,
+        type: 3}
+      propertyPath: theCharacter
+      value: 
+      objectReference: {fileID: 1656265838}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8037bad4d065044c91c9d34cd0268cd, type: 3}
 --- !u!1001 &8258096048690537850
